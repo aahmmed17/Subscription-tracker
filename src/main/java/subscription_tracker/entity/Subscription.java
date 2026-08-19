@@ -10,11 +10,15 @@ import java.time.LocalDate;
 @Table(name="Subscriptions")
 public class Subscription {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+    public Subscription(){
 
-    @Column(name = "Subscription_Name", length = 50, nullable = false, unique = false)
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "Subscription_Name", length = 100, nullable = false, unique = false)
     private String name;
 
     private BigDecimal cost;
@@ -30,7 +34,7 @@ public class Subscription {
     private String notes;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "User_id")
     private User user;
 
 
@@ -38,11 +42,11 @@ public class Subscription {
 
     // ID get + set
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     //Subscription name get + set
