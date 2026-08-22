@@ -4,7 +4,7 @@ package subscription_tracker.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
 
     public User(){
@@ -15,13 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "User_Name", length = 30, nullable = false, unique = true)
+    @Column(name = "user_Name", length = 30, nullable = false, unique = true)
     private String userName;
 
     @Column(length = 20)
     private String password;
 
-    @Column(name = "User_Email", length=30, nullable = false, unique = true)
+    @Column(name = "user_Email", length=30, nullable = false, unique = true)
     private String email;
 
     //To add: @OneToMany relationship with Subscription entity class.

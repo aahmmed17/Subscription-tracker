@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="Subscriptions")
+@Table(name="subscriptions")
 public class Subscription {
 
     public Subscription(){
@@ -18,7 +18,7 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Subscription_Name", length = 100, nullable = false, unique = false)
+    @Column(name = "subscription_Name", length = 100, nullable = false, unique = false)
     private String name;
 
     private BigDecimal cost;
