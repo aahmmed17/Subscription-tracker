@@ -1,5 +1,6 @@
 package subscription_tracker.controller;
 
+import jakarta.validation.Valid;
 import subscription_tracker.entity.Subscription;
 import subscription_tracker.repository.SubscriptionRepository;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class SubscriptionController {
     }
 
     @PostMapping
-    public Subscription createSubscription(@RequestBody Subscription subscription) {
+    public Subscription createSubscription(@Valid @RequestBody Subscription subscription) {
         return subscriptionRepository.save(subscription);
     }
 

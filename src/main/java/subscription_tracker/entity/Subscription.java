@@ -2,6 +2,7 @@ package subscription_tracker.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -19,8 +20,12 @@ public class Subscription {
     private Long id;
 
     @Column(name = "subscription_Name", length = 100, nullable = false, unique = false)
+    @NotBlank(message = "Subscription Name is Mandatory")
     private String name;
 
+
+    @NotNull(message = "Cost cannot be Null")
+    @Positive(message = "Cost must be positive amount")
     private BigDecimal cost;
 
     @Enumerated(EnumType.STRING)
