@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import subscription_tracker.entity.Subscription;
 import subscription_tracker.repository.SubscriptionRepository;
 import org.springframework.web.bind.annotation.*;
+import subscription_tracker.service.SubscriptionService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -12,10 +14,13 @@ import java.util.List;
 public class SubscriptionController {
 
     private final SubscriptionRepository subscriptionRepository;
+    private final SubscriptionService subscriptionService;
 
-    public SubscriptionController(SubscriptionRepository subscriptionRepository){
+    public SubscriptionController(SubscriptionRepository subscriptionRepository, SubscriptionService subscriptionService){
         this.subscriptionRepository = subscriptionRepository;
+        this.subscriptionService = subscriptionService;
     }
+
 
     @GetMapping
     public List<Subscription> getAllSubscriptions(){
@@ -42,5 +47,10 @@ public class SubscriptionController {
     @DeleteMapping("/{id}")
     public void deleteSubscription(@PathVariable Long id) {
         subscriptionRepository.deleteById(id);
+    }
+
+    @GetMapping("/total")
+    public BigDecimal getSubscriptionMonthlyCost(){
+        return subscriptionService.calculateMonthlySpend();
     }
 }
