@@ -2,6 +2,7 @@ package subscription_tracker.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -15,9 +16,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Username required")
     @Column(name = "user_Name", length = 30, nullable = false, unique = true)
     private String userName;
 
+    @NotBlank(message = "Password is required")
     @Column(length = 20)
     private String password;
 

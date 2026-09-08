@@ -49,7 +49,7 @@ public class SubscriptionController {
         subscriptionRepository.deleteById(id);
     }
 
-    @GetMapping("/total")
+    @GetMapping("/monthly-total")
     public BigDecimal getSubscriptionMonthlyCost(){
         return subscriptionService.calculateMonthlySpend();
     }
