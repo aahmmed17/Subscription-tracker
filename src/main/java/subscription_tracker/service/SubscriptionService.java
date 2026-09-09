@@ -31,10 +31,10 @@ public class SubscriptionService {
                     totalMonthlySpend = totalMonthlySpend.add(sub.getCost());
                     break;
                 case "YEARLY":
-                    totalMonthlySpend = totalMonthlySpend.add(sub.getCost().divide(BigDecimal.valueOf(12), 2, RoundingMode.CEILING));
+                    totalMonthlySpend = totalMonthlySpend.add(sub.getCost().divide(BigDecimal.valueOf(12), 2, RoundingMode.HALF_UP));
                     break;
                 case "WEEKLY":
-                    totalMonthlySpend = totalMonthlySpend.add(sub.getCost().multiply(BigDecimal.valueOf(4.33))).setScale(2,RoundingMode.CEILING);
+                    totalMonthlySpend = totalMonthlySpend.add(sub.getCost().multiply(BigDecimal.valueOf(4.33))).setScale(2,RoundingMode.HALF_UP);
                     break;
             }
 

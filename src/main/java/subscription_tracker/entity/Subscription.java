@@ -33,6 +33,7 @@ public class Subscription {
 
     private LocalDate nextRenewalDate;
 
+
     @Enumerated(EnumType.STRING)
     private SubscriptionCategory subCategory;
 
