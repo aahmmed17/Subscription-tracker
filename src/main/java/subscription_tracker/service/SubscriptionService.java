@@ -42,4 +42,31 @@ public class SubscriptionService {
         return totalMonthlySpend;
     }
 
+    public BigDecimal calculateYearlySpend(){
+        List<Subscription> allSubs = subscriptionRepository.findAll();
+        BigDecimal totalYearlySpend = BigDecimal.ZERO;
+
+        for (Subscription sub : allSubs) {
+
+            String billingEnum = sub.getBillingCycle().name();
+
+            switch (billingEnum) {
+
+                case "MONTHLY":
+                    totalYearlySpend = totalYearlySpend.add(sub.getCost().multiply(BigDecimal.valueOf(12))).setScale(2,RoundingMode.HALF_UP);
+                    break;
+                case "YEARLY":
+                    totalYearlySpend = totalYearlySpend.add(sub.getCost());
+                    break;
+                case "WEEKLY":
+                    totalYearlySpend = totalYearlySpend.add(sub.getCost().multiply(BigDecimal.valueOf(52))).setScale(2,RoundingMode.HALF_UP);
+                    break;
+            }
+
+        }
+        return totalYearlySpend;
+
+
+    }
+
 }

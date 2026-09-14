@@ -27,6 +27,7 @@ public class SubscriptionServiceTest {
     @InjectMocks
     private SubscriptionService subscriptionService;
 
+    //Tests for total monthly subscription expenses
     @Test
     public void testMonthlySpendCalc(){
 

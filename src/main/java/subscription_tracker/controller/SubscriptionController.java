@@ -53,4 +53,10 @@ public class SubscriptionController {
     public BigDecimal getSubscriptionMonthlyCost(){
         return subscriptionService.calculateMonthlySpend();
     }
+
+    @GetMapping("/yearly-total")
+    public BigDecimal getSubscriptionYearlyCost(){
+        return  subscriptionService.calculateYearlySpend();
+    }
+
 }
