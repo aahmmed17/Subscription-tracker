@@ -8,6 +8,7 @@ import subscription_tracker.repository.UserRepository;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173/", maxAge = 3600)
 @RestController
 @RequestMapping("/api/users")
 public class UserController {

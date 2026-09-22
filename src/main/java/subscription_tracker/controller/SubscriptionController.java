@@ -9,6 +9,7 @@ import subscription_tracker.service.SubscriptionService;
 import java.math.BigDecimal;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173/", maxAge = 3600)
 @RestController
 @RequestMapping("/api/subscriptions")
 public class SubscriptionController {
