@@ -13,12 +13,14 @@ export default function App() {
     })
 
     useEffect(() => {
-      fetch('http://localhost:8081/api/subscriptions')
-        .then(response => response.json())
-        .then(data => setSubs(data));
+      fetchSubscriptions();
     }, []);
 
-
+    function fetchSubscriptions(){
+        fetch('http://localhost:8081/api/subscriptions')
+                .then(response => response.json())
+                .then(data => setSubs(data));
+        }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -38,6 +40,13 @@ export default function App() {
                                                  notes: "",
                                                  nextRenewalDate: "",}))
 
+         .then(()=>fetchSubscriptions());
+      }
+
+  function handleDelete(id){
+
+        fetch('http://localhost:8081/api/subscriptions/'+ id.toString(),{method: 'DELETE'})
+        .then(()=>fetchSubscriptions());
       }
 
   return(
@@ -45,7 +54,7 @@ export default function App() {
           <h1> Welcome to Subscription Tracker! </h1>
           <ul>
               {subs.map(sub => (
-                  <li key ={sub.id}>{sub.name}</li>
+                  <li key ={sub.id}>{sub.name} <button onClick={() => handleDelete(sub.id)}>Delete</button> </li>
               ))}
           </ul>
 
